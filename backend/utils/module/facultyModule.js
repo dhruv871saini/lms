@@ -12,6 +12,7 @@ const facultySchema = new mongoose.Schema(
       ref: "Admin",
       required: true,
     },
+    
   },
   {
     timestamps: true,
