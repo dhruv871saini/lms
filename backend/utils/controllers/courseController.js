@@ -1,4 +1,3 @@
-import exp from "constants"
 import multer from "multer"
 import path from "path"
 import handleError from "../middleware/handleError.js"
@@ -14,7 +13,6 @@ const store =multer.diskStorage({
     }
 })
 export const courseMulter=multer({storage:store})
-
 export const createCourse=async(req,res)=>{
     const {facultyid}=req.params;
     const{courseTitle,courseContent,courseAuthor,facultyId}=req.body;
@@ -40,7 +38,7 @@ export const createCourse=async(req,res)=>{
                 courseContent,
                 coursePdf:coursePdf.filname,
                 facultyId,
-            }) 
+            })
             if(stoereCourse){
                 const saveCourse =await stoereCourse.save()
                 if(saveCourse){

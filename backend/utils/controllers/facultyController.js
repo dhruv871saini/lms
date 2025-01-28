@@ -16,7 +16,6 @@ const store = multer.diskStorage({
   },
 });
 export const facultyMulter = multer({ storage: store });
-
 export const createFaculty = async (req, res) => {
   const { adminid } = req.params;
   const { facultyName, facultyPassword, facultyMobile, facultyEmail, adminId } =
@@ -25,13 +24,7 @@ export const createFaculty = async (req, res) => {
   if (!facultyProfile) {
     return res.status(400).json({ message: "Please upload a profile picture" });
   }
-  if (
-    facultyName &&
-    facultyPassword &&
-    facultyMobile &&
-    facultyEmail &&
-    adminId
-  ) {
+  if (facultyName && facultyPassword && facultyMobile && facultyEmail && adminId ){
     try {
       const verifyAdmin = await adminModel.findById(adminid);
       if (!verifyAdmin) {
@@ -117,6 +110,7 @@ export const loginFaculty = async (req, res) => {
     handleError(res, 500, "Internal server error ");
   }
 };
+//! update facult by admin id 
 export const updateFacultyByAdmin = async (req, res) => {
   const { adminid, facultyid } = req.params;
   const { facultyName, facultyMobile, facultyEmail, adminId } = req.body;
@@ -159,9 +153,16 @@ export const updateFacultyByAdmin = async (req, res) => {
     return handleError(res, 500, "Internal server error");
   }
 };
-//! get all course by faculty
+//  ! get all course by faculty
 export const getAllCourseByFaculty = async (req, res) => {
   const { facultyid } = req.params;
+  // // console.log(req.headers)
+  // const h= req.headers.data
+  // if(!h){
+  //   return handleError(res,400 ,"data key is not found")
+  // }
+
+
   if (!facultyid) {
     return handleError(res, 400, "Faculty id not found");
   }

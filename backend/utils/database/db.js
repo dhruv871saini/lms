@@ -3,11 +3,9 @@ import "dotenv/config"
 
 const db=async ()=>{
     const mongourl= process.env.MONGO_DB
-    if(!mongourl){
-console.log("missing the mongodb url ")
-    }
+    if(!mongourl){console.log("missing the mongodb url ")}
 try {
- const result=   await mongoose.connect(mongourl)
+ const result=   await mongoose.connect(mongourl);
  if(result){
     console.log("Connected to MongoDB")
  }else{

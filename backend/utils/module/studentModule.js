@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const studentSchema= mongoose.Schema({
     studentName:String,
     studentEmail:{
@@ -17,12 +16,10 @@ const studentSchema= mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,    
         ref:"Admin",
         required:true,
-        
     }
-
 },{
     timestamps: true,
 }
 )
 const studentModel= mongoose.model("student",studentSchema);
-export default studentModel; 
+export default studentModel;
